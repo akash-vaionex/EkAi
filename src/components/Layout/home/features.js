@@ -2,60 +2,77 @@ import { MessagesSquare, Heart, PenSquare, Trash2 } from 'lucide-react'
 
 const features = [
   {
-    name: 'Spam report',
+    name: 'Security & Compliance:',
     description:
-      'Autem reprehenderit aut debitis ut. Officiis harum omnis placeat blanditiis delectus sint vel et voluptatum. Labore asperiores non corporis molestiae.',
-    icon: Trash2,
+      'Enterprises rely on public APIs to access generative AI models and xGPT solutions, leaving them vulnerable to data leaks and privacy concerns, jeopardizing enterprise IP and knowledge ownership of highly sensitive enterprise data shared with third parties.',
+    icon: '/icons/feature_icon_1.svg',
   },
   {
-    name: 'Compose in markdown',
+    name: 'Performance & Cost:',
     description:
-      'Illum et aut inventore. Ut et dignissimos quasi. Omnis saepe dolorum. Hic autem fugiat. Voluptatem officiis necessitatibus est.',
-    icon: PenSquare,
+      "Enterprises encounter issues with GPT's set performance metrics and related costs. While 8% see this as a minor concern, a notable 32.8% consider it a major challenge, highlighting the need for better performance-to-cost optimization.",
+    icon: '/icons/feature_icon_2.svg',
   },
   {
-    name: 'Email commenting',
+    name: 'Governance:',
     description:
-      'Commodi quam quo. In quasi mollitia optio voluptate et est reiciendis. Ut et sunt id officiis vitae perspiciatis. Et accusantium sapiente.',
-    icon: MessagesSquare,
+      'Organizations prioritize managing access to sensitive data. This ensures only authorized personnel handle critical information, highlighting the need for strict data governance and access controls within businesses.',
+    icon: '/icons/feature_icon_3.svg',
   },
   {
-    name: 'Customer connections',
+    name: 'Data:',
     description:
-      'Deserunt corrupti praesentium quo vel cupiditate est occaecati ad. Aperiam libero modi similique iure praesentium facilis quo cumque quibusdam.',
-    icon: Heart,
+      'The ability to preserve company knowledge, generate AI models, and maintain a competitive edge with corporate IP protection.',
+    icon: '/icons/feature_icon_4.svg',
+  },
+  {
+    name: 'Customizations & Flexibility',
+    description:
+      'Organizations value the ability to adapt AI models using their unique datasets. This ensures tailored and relevant AI solutions, allowing businesses to keep their models updated and aligned with changing objectives.',
+    icon: '/icons/feature_icon_5.svg',
+  },
+  {
+    name: 'Build or Buy',
+    description:
+      'Organisations are contemplating if they should build AI stack internally or buy it. One research found out that building AI internally costs 3x more than buying it in the first year alone.',
+    icon: '/icons/feature_icon_6.svg',
   },
 ]
 
 export function Features() {
   return (
-    <div className="bg-white py-24 sm:py-32">
+    <div className="bg-[#2563EB]/10 py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Stay on top of customer support
-          </h2>
-          <dl className="col-span-2 grid grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2">
-            {features.map((feature) => (
-              <div key={feature.name}>
-                <dt className="text-base font-semibold leading-7 text-gray-900">
-                  <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-                    <feature.icon
-                      className="h-6 w-6 text-white"
-                      aria-hidden="true"
-                      color="white"
-                    />
-                  </div>
-                  {feature.name}
-                </dt>
-                <dd className="mt-1 text-base leading-7 text-gray-600">
-                  {feature.description}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </div>
+        <span className="relative rounded-full py-1 px-3 text-sm leading-6 text-gray-600 ring-1 ring-[#155EEF]/10 hover:ring-[#155EEF]/20 bg-white text-blue-700">
+          Problems
+        </span>
+        <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-16 leading-8 mt-3">
+          Key Problems in Embracing Generative AI,{' '}
+          <br className="hidden sm:block" />
+          LLMs, and xGPT
+        </h2>
+        <dl className="col-span-2 grid grid-cols-1 gap-x-16 gap-y-16 sm:grid-cols-3">
+          {features.map((feature) => (
+            <div key={feature.name}>
+              <dt className="text-base font-semibold leading-7 text-gray-900">
+                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg ">
+                  <img
+                    className="h-10 w-10 text-white"
+                    src={feature.icon}
+                    aria-hidden="true"
+                    color="white"
+                  />
+                </div>
+                {feature.name}
+              </dt>
+              <dd className="mt-1 text-base leading-7 text-gray-600">
+                {feature.description}
+              </dd>
+            </div>
+          ))}
+        </dl>
       </div>
+      {/* </div> */}
     </div>
   )
 }

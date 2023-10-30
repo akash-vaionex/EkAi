@@ -3,20 +3,30 @@
 import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import Link from 'next/link'
-import { X, AlignJustify } from 'lucide-react'
+import {
+  X,
+  AlignJustify,
+  UserIcon,
+  User2Icon,
+  UserX2Icon,
+  CalendarDays,
+} from 'lucide-react'
+import { usePathname } from 'next/navigation'
 
 const navigation = [
-  { name: 'About', href: '/about' },
-  { name: 'Dashboard', href: '/dashboard' },
-  { name: 'Contact', href: '/contact' },
-  { name: 'Pricing', href: '/pricing' },
+  { name: 'Home', href: '/' },
+  { name: "Expert's Voice", href: '/experts_voice' },
+  { name: 'Features', href: '/feature' },
 ]
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
+  const pathname = usePathname()
+  console.log(pathname)
+
   return (
-    <header className="bg-gray-900">
+    <header className="bg-white opacity-0.2">
       <nav
         className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
         aria-label="Global"
@@ -25,8 +35,8 @@ export function Header() {
           <Link href="#" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
             <img
-              className="h-8 w-auto"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+              className="h-8 w-auto w-[89px] h-[29px]"
+              src="/logo.svg"
               alt=""
             />
           </Link>
@@ -51,25 +61,29 @@ export function Header() {
             <Link
               key={item.name}
               href={item.href}
-              className="text-sm font-semibold leading-6 text-white"
+              className={`text-sm font-semibold leading-6 text-gray-400 cursor-pointer hover:text-[#2563EB] border-b-2 hover:border-b-2 border-b-transparent hover:border-b-[#2563EB] ${
+                pathname === item.href ? 'border-b-[#2563EB]' : ''
+              }`}
             >
               {item.name}
             </Link>
           ))}
         </div>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center">
           <Link
             href="/login"
-            className="text-sm font-semibold leading-6 mx-3 text-white"
+            className="text-sm font-semibold leading-6 mx-4 text-white flex text-[#2563EB] "
           >
+            <UserIcon className="mr-2" />
             Log in
           </Link>
-          <Link
+          <button
             href="/register"
-            className="text-sm font-semibold leading-6 mx3 text-white"
+            className="text-sm font-semibold leading-6 mx3 text-white bg-[#2563EB] px-4 py-3 rounded-md flex"
           >
-            Register
-          </Link>
+            <CalendarDays className="mr-2" />
+            Book a demo
+          </button>
         </div>
       </nav>
       <Dialog

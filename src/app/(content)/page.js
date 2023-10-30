@@ -1,11 +1,19 @@
-import { Hero, About, Features } from '../../components/Layout/home'
+import { Services } from '@/components/Layout/home/services'
+import {
+  Hero,
+  About,
+  Features,
+  ContactCard,
+} from '../../components/Layout/home'
 
 export default function Home() {
   return (
     <div>
       <Hero />
-      <About />
+      {/* <About /> */}
+      <Services />
       <Features />
+      <ContactCard />
     </div>
   )
 }
