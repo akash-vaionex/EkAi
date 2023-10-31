@@ -5,43 +5,29 @@ import {
   FolderClosed,
   Inbox,
   Users2,
+  Plus,
+  MessagesSquareIcon,
+  MessageCircle,
 } from 'lucide-react'
 
 export const navigation = [
+
   {
-    name: 'Dashboard',
+    name: 'How to write an impacting ...',
     href: '#',
-    icon: Home,
-    current: true,
-  },
-  {
-    name: 'Team',
-    href: '#',
-    icon: Users2,
+    icon: MessageCircle,
     current: false,
   },
   {
-    name: 'Projects',
+    name: 'Web accessibility',
     href: '#',
-    icon: FolderClosed,
+    icon: MessageCircle,
     current: false,
   },
   {
-    name: 'Calendar',
+    name: 'What is machine learning',
     href: '#',
-    icon: Calendar,
-    current: false,
-  },
-  {
-    name: 'Documents',
-    href: '#',
-    icon: Inbox,
-    current: false,
-  },
-  {
-    name: 'Reports',
-    href: '#',
-    icon: BarChart4,
+    icon: MessageCircle,
     current: false,
   },
 ]

@@ -72,7 +72,7 @@ export function Header() {
         <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center">
           <Link
             href="/login"
-            className="text-sm font-semibold leading-6 mx-4 text-white flex text-[#2563EB] "
+            className="text-sm font-semibold leading-6 mx-4 text-blue-600 flex text-[#2563EB] "
           >
             <UserIcon className="mr-2" />
             Log in

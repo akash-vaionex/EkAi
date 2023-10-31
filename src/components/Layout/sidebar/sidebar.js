@@ -1,7 +1,14 @@
 'use client'
 
 import { Dialog, Transition } from '@headlessui/react'
-import { X, AlignJustify } from 'lucide-react'
+import {
+  X,
+  AlignJustify,
+  DeleteIcon,
+  Trash,
+  LockIcon,
+  Plus,
+} from 'lucide-react'
 import { Fragment, useState } from 'react'
 
 import { navigation } from './config'
@@ -10,19 +17,11 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export function Sidebar() {
+export function Sidebar({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   return (
     <>
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-gray-100">
-        <body class="h-full">
-        ```
-      */}
       <div>
         <Transition.Root show={sidebarOpen} as={Fragment}>
           <Dialog
@@ -74,12 +73,13 @@ export function Sidebar() {
                     </div>
                   </Transition.Child>
                   <div className="h-0 flex-1 overflow-y-auto pt-5 pb-4">
-                    <div className="flex flex-shrink-0 items-center px-4">
-                      <img
-                        className="h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                        alt="Your Company"
-                      />
+                    <div className="flex flex-shrink-0 items-center px-4 ">
+                      <div className="w-full bg-[#2563EB] px-3 py-2 flex items-center rounded-lg flex-wrap text-white text-sm">
+                        <div className="p-4 w-6 h-6 flex justify-center items-center bg-white text-[#2563EB] rounded-full mr-3">
+                          Q
+                        </div>{' '}
+                        Qasim Muhammad
+                      </div>
                     </div>
                     <nav className="mt-5 space-y-1 px-2">
                       {navigation.map((item) => (
@@ -107,49 +107,60 @@ export function Sidebar() {
                       ))}
                     </nav>
                   </div>
-                  <div className="flex flex-shrink-0 bg-gray-700 p-4">
-                    <a href="#" className="group block flex-shrink-0">
-                      <div className="flex items-center">
-                        <div>
-                          <img
-                            className="inline-block h-10 w-10 rounded-full"
-                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                            alt=""
-                          />
+                  <div className="px-2">
+                    <div className="flex flex-col flex-shrink-0 border-t-2 border-t-gray-700 p-4">
+                      <a
+                        href="#"
+                        className="group block w-full flex-shrink-0 py-1"
+                      >
+                        <div className="flex items-center">
+                          <div>
+                            <Trash className="text-white" />
+                          </div>
+                          <div className="ml-3">
+                            <p className="text-sm font-medium text-white">
+                              Clear all conversations
+                            </p>
+                          </div>
                         </div>
-                        <div className="ml-3">
-                          <p className="text-base font-medium text-white">
-                            Tom Cook
-                          </p>
-                          <p className="text-sm font-medium text-gray-400 group-hover:text-gray-300">
-                            View profile
-                          </p>
+                      </a>
+                      <a
+                        href="#"
+                        className="group block w-full flex-shrink-0 mt-4 py-1"
+                      >
+                        <div className="flex items-center">
+                          <div>
+                            <LockIcon className="text-white" />
+                          </div>
+                          <div className="ml-3">
+                            <p className="text-sm font-medium text-white">
+                              Logout
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    </a>
+                      </a>
+                    </div>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
-              <div className="w-14 flex-shrink-0">
-                {/* Force sidebar to shrink to fit close icon */}
-              </div>
             </div>
           </Dialog>
         </Transition.Root>
 
         {/* Static sidebar for desktop */}
-        <div className="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col">
+        <div className="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-72 lg:flex-col">
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex min-h-0 flex-1 flex-col bg-gray-800">
             <div className="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
-              <div className="flex flex-shrink-0 items-center px-4">
-                <img
-                  className="h-8 w-auto"
-                  src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                  alt="Your Company"
-                />
+              <div className="flex flex-shrink-0 items-center px-4 ">
+                <div className="w-full bg-[#2563EB] px-3 py-2 flex items-center rounded-lg flex-wrap text-white text-sm">
+                  <div className="p-4 w-6 h-6 flex justify-center items-center bg-white text-[#2563EB] rounded-full mr-3">
+                    Q
+                  </div>{' '}
+                  Qasim Muhammad
+                </div>
               </div>
-              <nav className="mt-5 flex-1 space-y-1 px-2">
+              <nav className="mt-5 flex-1 space-y-1 px-3">
                 {navigation.map((item) => (
                   <a
                     key={item.name}
@@ -158,7 +169,7 @@ export function Sidebar() {
                       item.current
                         ? 'bg-gray-900 text-white'
                         : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                      'group flex items-center rounded-md px-2 py-2 text-sm font-medium',
+                      'group flex items-center rounded-md px-3 py-3 text-sm font-medium',
                     )}
                   >
                     <item.icon
@@ -173,26 +184,50 @@ export function Sidebar() {
                     {item.name}
                   </a>
                 ))}
+                <a
+                  href={'#'}
+                  className={classNames(
+                    'bg-white text-[#2563EB] group flex items-center rounded-md px-3 py-3 text-sm font-medium',
+                  )}
+                >
+                  <Plus
+                    className={classNames(
+                      'text-[#2563EB] mr-3 h-6 w-6 flex-shrink-0',
+                    )}
+                    aria-hidden="true"
+                  />
+                  Start a chat
+                </a>
               </nav>
             </div>
-            <div className="flex flex-shrink-0 bg-gray-700 p-4">
-              <a href="#" className="group block w-full flex-shrink-0">
-                <div className="flex items-center">
-                  <div>
-                    <img
-                      className="inline-block h-9 w-9 rounded-full"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      alt=""
-                    />
+            <div className="px-2">
+              <div className="flex flex-col flex-shrink-0 border-t-2 border-t-gray-700 p-4">
+                <a href="#" className="group block w-full flex-shrink-0 py-1">
+                  <div className="flex items-center">
+                    <div>
+                      <Trash className="text-white" />
+                    </div>
+                    <div className="ml-3">
+                      <p className="text-sm font-medium text-white">
+                        Clear all conversations
+                      </p>
+                    </div>
                   </div>
-                  <div className="ml-3">
-                    <p className="text-sm font-medium text-white">Tom Cook</p>
-                    <p className="text-xs font-medium text-gray-300 group-hover:text-gray-200">
-                      View profile
-                    </p>
+                </a>
+                <a
+                  href="#"
+                  className="group block w-full flex-shrink-0 mt-4 py-1"
+                >
+                  <div className="flex items-center">
+                    <div>
+                      <LockIcon className="text-white" />
+                    </div>
+                    <div className="ml-3">
+                      <p className="text-sm font-medium text-white">Logout</p>
+                    </div>
                   </div>
-                </div>
-              </a>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -207,15 +242,10 @@ export function Sidebar() {
               <AlignJustify className="h-6 w-6" aria-hidden="true" />
             </button>
           </div>
-          <main className="flex-1">
+          <main className="flex-1 bg-[url('/icons/background.svg')] bg-repeat">
             <div className="py-6">
-              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <h1 className="text-2xl font-semibold text-gray-900">
-                  Dashboard
-                </h1>
-              </div>
-              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                {/* Your content */}
+              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
+                {children}
               </div>
             </div>
           </main>

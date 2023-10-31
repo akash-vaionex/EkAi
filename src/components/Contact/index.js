@@ -1,11 +1,8 @@
 'use client'
 import React, { useState } from 'react'
 import { useToast } from '@/components/UI/use-toast'
-import Image from 'next/image'
-import { Input } from '@/components/UI/input'
-import { Button } from '@/components/UI/button'
-import { Label } from '@/components/UI/label'
-import { Textarea } from '@/components/UI/textarea'
+import { Switch } from '@headlessui/react'
+import { Button } from '../UI/button'
 
 const formConfig = [
   {
@@ -52,6 +49,7 @@ export default function ContactComponent() {
     phoneNumber: '',
     message: '',
   })
+  const [enabled, setEnabled] = useState(false)
   const { toast } = useToast()
 
   const handleChange = (e) => {
@@ -105,133 +103,157 @@ export default function ContactComponent() {
       })
     }
   }
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(' ')
+  }
 
   return (
     <div className="relative isolate bg-white">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
-        <div className="relative px-6 pb-20 pt-24 sm:pt-32 lg:static lg:px-8 lg:py-48">
-          <div className="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
-            <div className="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden bg-gray-100 ring-1 ring-gray-900/10 lg:w-1/2">
-              <svg
-                className="absolute inset-0 h-full w-full stroke-gray-200 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
-                aria-hidden="true"
-              >
-                <defs>
-                  <pattern
-                    id="83fd4e5a-9d52-42fc-97b6-718e5d7ee527"
-                    width={200}
-                    height={200}
-                    x="100%"
-                    y={-1}
-                    patternUnits="userSpaceOnUse"
-                  >
-                    <path d="M130 200V.5M.5 .5H200" fill="none" />
-                  </pattern>
-                </defs>
-                <rect width="100%" height="100%" strokeWidth={0} fill="white" />
-                <svg x="100%" y={-1} className="overflow-visible fill-gray-50">
-                  <path d="M-470.5 0h201v201h-201Z" strokeWidth={0} />
-                </svg>
-                <rect
-                  width="100%"
-                  height="100%"
-                  strokeWidth={0}
-                  fill="url(#83fd4e5a-9d52-42fc-97b6-718e5d7ee527)"
-                />
-              </svg>
-            </div>
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900">
-              Get in touch
-            </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
-              Get in touch with us! We value your feedback and inquiries.
-              Contact our dedicated team for prompt assistance. We are here to
-              help!
+      <div className="mx-auto md:py-24 py-12 sm:pt-24 bg-[url('/icons/background.svg')] bg-opacity-0">
+        <div className="max-w-[576px] mx-auto my-auto">
+          <div className="text-center">
+            <h1 className="text-4xl font-bold tracking-tight text-[#2563EB] sm:text-4xl">
+              Contact EKAI
+            </h1>
+            <p className="mt-6 text-lg leading-8 text-gray-600 font-normal">
+              If you're interested in experiencing our offerings firsthand,
+              please <br />
+              reach out to us to book a captivating demo!
             </p>
-            <dl className="mt-10 space-y-4 text-base leading-7 text-gray-600">
-              <div className="flex gap-x-4">
-                <dt className="flex-none">
-                  <span className="sr-only">Address</span>
-                  <Image
-                    src="/building.svg"
-                    alt="address"
-                    width={24}
-                    height={200}
-                  />
-                </dt>
-                <dd>
-                  19702 Newark,
-                  <br />
-                  Delaware, USA
-                </dd>
-              </div>
-
-              <div className="flex gap-x-4">
-                <dt className="flex-none">
-                  <span className="sr-only">Email</span>
-                  <Image
-                    src="/envelop.svg"
-                    alt="mail"
-                    width={24}
-                    height={200}
-                  />
-                </dt>
-                <dd>
-                  <a
-                    className="hover:text-gray-900"
-                    href="mailto:one@vaionex.com"
-                  >
-                    one@vaionex.com
-                  </a>
-                </dd>
-              </div>
-            </dl>
           </div>
-        </div>
-        <form
-          className="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-48"
-          onSubmit={handleSubmitContact}
-        >
-          <div className="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
-            <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-              {formConfig.map((field) => (
-                <div className="mt-2.5" key={field.name}>
-                  <Label htmlFor={field.name}>{field.label}</Label>
-                  <div className="mt-2.5">
-                    {field.isTextarea ? (
-                      <Textarea
-                        name={field.name}
-                        id={field.name}
-                        rows={4}
-                        value={formData[field.name]}
-                        onChange={handleChange}
-                        required={true}
-                      />
-                    ) : (
-                      <Input
-                        type={field.type}
-                        name={field.name}
-                        id={field.name}
-                        value={formData[field.name]}
-                        onChange={handleChange}
-                        required={true}
-                      />
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="mt-8 flex justify-end">
-              <Button
-                type="submit"
-                className=" text-white"
-                spinnerClassName="text-white"
+          <form className="px-6 pt-12" onSubmit={handleSubmitContact}>
+            <div>
+              <label
+                htmlFor="fullName"
+                className="block text-sm font-medium leading-6 text-gray-900"
               >
-                Send message
-              </Button>
+                Full Name
+              </label>
+              <div className="mt-2">
+                <input
+                  type="text"
+                  name="fullName"
+                  className="block w-full rounded-md border-0 py-1.5 bg-sky-50 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 mb-4 px-2"
+                />
+              </div>
             </div>
-          </div>
-        </form>
+            <div>
+              <label
+                htmlFor="workEmail"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Work Email
+              </label>
+              <div className="mt-2">
+                <input
+                  type="email"
+                  name="workEmail"
+                  id="email"
+                  className="block w-full rounded-md border-0 py-1.5 bg-sky-50 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 mb-4 px-2"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label
+                htmlFor="company"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Company
+              </label>
+              <div className="mt-2">
+                <input
+                  type="text"
+                  name="company"
+                  id="email"
+                  className="block w-full rounded-md border-0 py-1.5 bg-sky-50 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 mb-4 px-2"
+                />
+              </div>
+            </div>
+            <div>
+              <label
+                htmlFor="industry"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Industry
+              </label>
+              <div className="mt-2">
+                <input
+                  type="text"
+                  name="industry"
+                  id="email"
+                  className="block w-full rounded-md border-0 py-1.5 bg-sky-50 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 mb-4 px-2"
+                />
+              </div>
+            </div>
+            <div>
+              <label
+                htmlFor="phone"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Phone Number
+              </label>
+              <div className="mt-2">
+                <input
+                  type="text"
+                  name="phone"
+                  id="email"
+                  className="block w-full rounded-md border-0 py-1.5 bg-sky-50 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 mb-4 px-2"
+                />
+              </div>
+            </div>
+            <div>
+              <label
+                htmlFor="message"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Message
+              </label>
+              <div className="mt-2 mb-4">
+                <textarea
+                  rows={4}
+                  name="comment"
+                  id="comment"
+                  className="block w-full rounded-md border-0 py-1.5 bg-sky-50 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                  defaultValue={''}
+                />
+              </div>
+            </div>
+            <Switch.Group as="div" className="flex items-center w-full">
+              <Switch
+                // checked={enabled}
+                // onChange={setEnabled}
+                className={classNames(
+                  enabled ? 'bg-blue-600' : 'bg-gray-200',
+                  'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2',
+                )}
+              >
+                <span
+                  aria-hidden="true"
+                  className={classNames(
+                    enabled ? 'translate-x-5' : 'translate-x-0',
+                    'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out',
+                  )}
+                />
+              </Switch>
+              <Switch.Label as="span" className="ml-3 text-sm">
+                <span className="font-medium text-slate-600 text-sm">
+                  By selecting this, you agree to the{' '}
+                  <a href="#" className="underline text-gray-900">
+                    Privacy Policy
+                  </a>
+                  &nbsp;and{' '}
+                  <a href="#" className="underline text-gray-900">
+                    Cookie Policy
+                  </a>
+                </span>
+              </Switch.Label>
+            </Switch.Group>
+            <button className="w-full rounded-full mt-4 bg-blue-600 px-4 py-2 text-white text-base">
+              Let's talk
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   )

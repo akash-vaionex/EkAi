@@ -1,5 +1,5 @@
 import '../globals.css'
-import { Header, Footer } from '@/components/Layout'
+import { Header, Footer, Sidebar } from '@/components/Layout'
 
 export const metadata = {
   description: 'Dashboard',
@@ -9,9 +9,7 @@ export const metadata = {
 export default function DashboardRootLayout({ children }) {
   return (
     <>
-      <Header />
-      {children}
-      <Footer />
+      <Sidebar children={children}></Sidebar>
     </>
   )
 }

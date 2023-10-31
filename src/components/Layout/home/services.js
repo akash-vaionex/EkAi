@@ -27,7 +27,7 @@ const features = [
 export function Services() {
   return (
     <div>
-      <div className="mx-auto py-24 sm:py-0 ">
+      <div className="mx-auto py-24 sm:pt-24">
         <div className="hidden sm:mb-8 sm:flex sm:justify-center">
           <Chip text="The Solution" />
         </div>

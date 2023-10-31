@@ -1,8 +1,10 @@
+import Banner from './banner'
+
 export function Hero() {
   return (
     <main>
       <div className="relative px-6 lg:px-8 bg-[url('/icons/background.svg')]">
-        <div className="mx-auto  py-32 sm:py-48 lg:py-56">
+        <div className="mx-auto  py-32 sm:py-32">
           <div className="hidden sm:mb-8 sm:flex sm:justify-center">
             <div className="relative rounded-full py-1 px-3 text-sm leading-6 text-gray-600 ring-4 ring-[#155EEF]/10 hover:ring-[#155EEF]/20 bg-white text-[#155EEF]">
               Introducing EKAI
@@ -32,7 +34,8 @@ export function Hero() {
             </div>
           </div>
         </div>
-        <div className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
+        <Banner />
+        {/* <div className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
           <svg
             className="relative left-[calc(50%+3rem)] h-[21.1875rem] max-w-none -translate-x-1/2 sm:left-[calc(50%+36rem)] sm:h-[42.375rem]"
             viewBox="0 0 1155 678"
@@ -56,7 +59,7 @@ export function Hero() {
               </linearGradient>
             </defs>
           </svg>
-        </div>
+        </div> */}
       </div>
     </main>
   )

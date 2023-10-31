@@ -43,7 +43,7 @@ export function Features() {
   return (
     <div className="bg-[#2563EB]/10 py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <span className="relative rounded-full py-1 px-3 text-sm leading-6 text-gray-600 ring-1 ring-[#155EEF]/10 hover:ring-[#155EEF]/20 bg-white text-blue-700">
+        <span className="relative rounded-full py-1 px-3 text-sm leading-6 ring-1 ring-[#155EEF]/10 hover:ring-[#155EEF]/20 bg-white text-blue-700">
           Problems
         </span>
         <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-16 leading-8 mt-3">

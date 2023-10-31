@@ -5,12 +5,13 @@ import {
   Features,
   ContactCard,
 } from '../../components/Layout/home'
+import Testimonial from '@/components/Layout/home/testimonial'
 
 export default function Home() {
   return (
     <div>
       <Hero />
-      {/* <About /> */}
+      <Testimonial />
       <Services />
       <Features />
       <ContactCard />
